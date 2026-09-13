@@ -1,0 +1,15 @@
+[project]
+name = "agent-langchain"
+version = "0.1.0"
+description = "RAG agent built with LangChain, using its native Chroma retriever"
+requires-python = ">=3.13"
+dependencies = [
+    "infra-core",
+    "langchain>=1.0.0",
+    "langchain-anthropic>=1.0.0",
+    "langchain-chroma>=0.2.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

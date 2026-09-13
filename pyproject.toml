@@ -1,11 +1,8 @@
-[project]
-name = "infra-buddy"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "chromadb>=1.5.9",
-    "langchain-text-splitters>=1.1.2",
-    "sentence-transformers>=6.0.1",
-]
+# Virtual workspace root: not an installable package itself, it only ties the
+# members together so they share one lockfile and one venv.
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+infra-core = { workspace = true }

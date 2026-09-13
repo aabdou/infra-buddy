@@ -1,0 +1,13 @@
+[project]
+name = "agent-raw"
+version = "0.1.0"
+description = "RAG agent built directly on the Anthropic Messages API"
+requires-python = ">=3.13"
+dependencies = [
+    "infra-core",
+    "anthropic>=0.40.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

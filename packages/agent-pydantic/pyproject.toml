@@ -1,0 +1,13 @@
+[project]
+name = "agent-pydantic"
+version = "0.1.0"
+description = "RAG agent built with Pydantic AI, retrieval exposed as an agent tool"
+requires-python = ">=3.13"
+dependencies = [
+    "infra-core",
+    "pydantic-ai>=0.0.14",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
