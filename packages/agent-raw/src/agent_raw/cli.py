@@ -2,11 +2,16 @@
 
 import argparse
 
+from infra_core.config import load_env
+
 from agent_raw.agent import answer
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="RAG over AWS docs, direct Anthropic Messages API")
+    load_env()
+    parser = argparse.ArgumentParser(
+        description="RAG over AWS docs, direct Anthropic Messages API"
+    )
     parser.add_argument("question", help="natural-language question about S3")
     args = parser.parse_args()
 

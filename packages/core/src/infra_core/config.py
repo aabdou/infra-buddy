@@ -8,6 +8,8 @@ with different amounts of context, in different embedding spaces.
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 
 def _find_data_dir() -> Path:
     """Locate the repo's data/ directory.
@@ -33,6 +35,12 @@ def _find_data_dir() -> Path:
 
 DATA_DIR = _find_data_dir()
 DB_PATH = DATA_DIR / "db/docs.db"
+ENV_FILE = DATA_DIR.parent / ".env"
+
+
+def load_env() -> None:
+    load_dotenv(ENV_FILE)
+
 
 COLLECTION = "aws-s3-devguide"
 TOP_N = 5

@@ -21,7 +21,14 @@ class Message:
 
 
 messages: list[Message] = []
-client = anthropic.Anthropic()
+_client: anthropic.Anthropic | None = None
+
+
+def _get_client() -> anthropic.Anthropic:
+    global _client
+    if _client is None:
+        _client = anthropic.Anthropic()
+    return _client
 
 
 def to_document(chunk: Chunk) -> DocumentBlockParam:
@@ -49,7 +56,7 @@ def answer(question: str) -> Answer:
     chunks = search(question)
     messages = [to_document(c) for c in chunks] + [to_question(question)]
 
-    result = client.messages.create(
+    result = _get_client().messages.create(
         messages=[to_user_turn(messages)],
         system=SYSTEM_PROMPT,
         model="claude-opus-5",

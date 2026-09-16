@@ -1158,12 +1158,14 @@ source = { editable = "packages/core" }
 dependencies = [
     { name = "chromadb" },
     { name = "langchain-text-splitters" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "chromadb", specifier = ">=1.5.9" },
     { name = "langchain-text-splitters", specifier = ">=1.1.2" },
+    { name = "python-dotenv", specifier = ">=1.2.3" },
 ]
 
 [[package]]
