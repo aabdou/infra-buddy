@@ -13,3 +13,4 @@ wheels/
 # project
 data/
 .env
+.vscode/

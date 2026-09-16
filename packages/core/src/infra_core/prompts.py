@@ -1,7 +1,10 @@
 """Prompt text shared by every implementation.
 
-Defined once so "answers must cite their source chunk" means the same thing
-in all three agents.
+Behaviour rules only -- deliberately says nothing about how to cite. Each
+agent's citation mechanism differs (the API's citations feature returns
+sources as structured data; a self-reported result type needs an instruction),
+so citation wording belongs with the agent, not here. What is shared is the
+part that affects answer quality, which is what makes the agents comparable.
 """
 
 from infra_core.types import Chunk
@@ -12,12 +15,14 @@ documentation excerpts provided to you.
 Rules:
 - Answer only from the excerpts. If they do not contain the answer, say so \
 plainly rather than filling the gap from memory.
-- Cite the chunk id you used, in square brackets, immediately after the claim \
-it supports. For example: [aws-s3-dev-421]
 - Be concise. Prefer the documentation's own wording for exact names of \
 settings, API calls and permissions."""
 
 
 def format_context(chunks: list[Chunk]) -> str:
-    """Render retrieved chunks as citable context."""
+    """Render retrieved chunks as citable context.
+
+    For agents that pass chunks as plain text. Agents using the API's document
+    blocks send chunk text directly and do not need this.
+    """
     return "\n\n".join(f"[{chunk.id}]\n{chunk.text}" for chunk in chunks)
