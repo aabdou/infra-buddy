@@ -63,6 +63,9 @@ def answer(question: str) -> Answer:
         max_tokens=16000,
     )
 
+    if result.stop_reason != "end_turn":
+        raise RuntimeError(result.stop_reason)
+
     body: list[str] = []
     citations: list[Citation] = []
     for block in result.content:  # list[ContentBlock]
