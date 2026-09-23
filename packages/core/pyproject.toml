@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Shared ingest + retrieval layer over the AWS docs Chroma store"
 requires-python = ">=3.13"
 dependencies = [
+    "anthropic>=0.40.0",
     "chromadb>=1.5.9",
     "langchain-text-splitters>=1.1.2",
     "python-dotenv>=1.2.3",

@@ -8,7 +8,8 @@ to search -- retrieval always happens, exactly once, before generation.
 from dataclasses import dataclass
 
 import anthropic
-from anthropic.types import DocumentBlockParam, MessageParam, TextBlockParam
+from anthropic.types import DocumentBlockParam
+from infra_core.blocks import to_question, to_user_turn
 from infra_core.prompts import SYSTEM_PROMPT
 from infra_core.retrieval import search
 from infra_core.types import Answer, Chunk, Citation
@@ -42,14 +43,6 @@ def to_document(chunk: Chunk) -> DocumentBlockParam:
         "title": chunk.id,
         "citations": {"enabled": True},
     }
-
-
-def to_question(text: str) -> TextBlockParam:
-    return {"type": "text", "text": text}
-
-
-def to_user_turn(content: list[DocumentBlockParam | TextBlockParam]) -> MessageParam:
-    return {"role": "user", "content": content}
 
 
 def answer(question: str) -> Answer:

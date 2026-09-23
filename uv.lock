@@ -11,6 +11,7 @@ members = [
     "agent-langchain",
     "agent-pydantic",
     "agent-raw",
+    "agent-raw-tools",
     "infra-core",
 ]
 
@@ -52,6 +53,21 @@ requires-dist = [
 name = "agent-raw"
 version = "0.1.0"
 source = { editable = "packages/agent-raw" }
+dependencies = [
+    { name = "anthropic" },
+    { name = "infra-core" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "anthropic", specifier = ">=0.40.0" },
+    { name = "infra-core", editable = "packages/core" },
+]
+
+[[package]]
+name = "agent-raw-tools"
+version = "0.1.0"
+source = { editable = "packages/agent-raw-tools" }
 dependencies = [
     { name = "anthropic" },
     { name = "infra-core" },
@@ -1156,6 +1172,7 @@ name = "infra-core"
 version = "0.1.0"
 source = { editable = "packages/core" }
 dependencies = [
+    { name = "anthropic" },
     { name = "chromadb" },
     { name = "langchain-text-splitters" },
     { name = "python-dotenv" },
@@ -1163,6 +1180,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "anthropic", specifier = ">=0.40.0" },
     { name = "chromadb", specifier = ">=1.5.9" },
     { name = "langchain-text-splitters", specifier = ">=1.1.2" },
     { name = "python-dotenv", specifier = ">=1.2.3" },
