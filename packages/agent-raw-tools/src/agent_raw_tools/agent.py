@@ -15,6 +15,7 @@ would spend money indefinitely.
 """
 
 import anthropic
+import weave
 from anthropic.types import MessageParam, ToolParam, ToolResultBlockParam, ToolUseBlock
 from infra_core.blocks import to_question, to_user_turn
 from infra_core.prompts import SYSTEM_PROMPT, format_context
@@ -95,6 +96,7 @@ def _run_search(block: ToolUseBlock) -> ToolResultBlockParam:
     }
 
 
+@weave.op
 def answer(question: str) -> Answer:
     messages: list[MessageParam] = [to_user_turn([to_question(question)])]
 

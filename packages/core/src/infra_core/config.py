@@ -8,6 +8,7 @@ with different amounts of context, in different embedding spaces.
 import os
 from pathlib import Path
 
+import weave
 from dotenv import load_dotenv
 
 
@@ -40,6 +41,10 @@ ENV_FILE = DATA_DIR.parent / ".env"
 
 def load_env() -> None:
     load_dotenv(ENV_FILE)
+
+
+def init_trace() -> None:
+    weave.init("amirabdou315-personal/infra-buddy")
 
 
 COLLECTION = "aws-s3-devguide"

@@ -2,13 +2,14 @@
 
 import argparse
 
-from infra_core.config import load_env
+from infra_core.config import init_trace, load_env
 
 from agent_raw_tools.agent import answer
 
 
 def main() -> None:
     load_env()
+    init_trace()
     parser = argparse.ArgumentParser(
         description="RAG over AWS docs, Anthropic Messages API with a search tool"
     )
